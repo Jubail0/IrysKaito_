@@ -3,7 +3,9 @@ const axios = require('axios');
 const app = express();
 const cors = require("cors");
 const PORT = 3000;
-app.use(cors());
+app.use(cors({
+  origin: "https://irys-yappers.netlify.app/",
+}));
 app.get('/api/mindshare', async (req, res) => {
   try {
     const { timeframe } = req.query;

@@ -5,6 +5,7 @@ const cors = require("cors");
 const PORT = 3000;
 app.use(cors({
   origin: "https://irys-yappers.netlify.app/",
+  credentials: true
 }));
 app.get('/api/mindshare', async (req, res) => {
   try {

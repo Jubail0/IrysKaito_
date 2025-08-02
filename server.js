@@ -2,11 +2,14 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const cors = require("cors");
+
 const PORT = 3000;
+
 app.use(cors({
-  origin: "https://irys-yappers.netlify.app/",
+  origin: "https://irys-yappers.netlify.app", // 
   credentials: true
 }));
+
 app.get('/api/mindshare', async (req, res) => {
   try {
     const { timeframe } = req.query;
@@ -19,14 +22,12 @@ app.get('/api/mindshare', async (req, res) => {
       }
     });
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
     const yappersData = {
-        total_yappers: response.data.community_mindshare.total_unique_yappers,
-        top_1k_yappers: response.data.community_mindshare.top_1000_yappers
-    }
+      total_yappers: response.data.community_mindshare.total_unique_yappers,
+      top_1k_yappers: response.data.community_mindshare.top_1000_yappers
+    };
 
     res.json(yappersData);
-    
 
   } catch (error) {
     console.error('Axios error:', error.message);

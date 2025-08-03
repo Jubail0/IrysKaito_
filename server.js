@@ -23,9 +23,11 @@ app.get('/api/mindshare', async (req, res) => {
     });
 
     const yappersData = {
-      total_yappers: response.data.community_mindshare.total_unique_yappers,
-      top_1k_yappers: response.data.community_mindshare.top_1000_yappers
-    };
+        total_yappers: response.data.community_mindshare.total_unique_yappers,
+        total_tweets: response.data.community_mindshare.total_unique_tweets,
+        top_engagements: response.data.community_mindshare.top_1000_yapper_community_engagements,
+        top_1k_yappers: response.data.community_mindshare.top_1000_yappers
+    }
 
     res.json(yappersData);
 

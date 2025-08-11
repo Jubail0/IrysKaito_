@@ -2,6 +2,8 @@ import axios from "axios";
 import crypto from "crypto";
 import { twitterConfig } from "../config/twitterConfig.js";
 import { generateCodeChallenge, generateCodeVerifier } from "../utils/twitterUtils.js";
+import dotenv from "dotenv";
+dotenv.config();
 
  export const redirectToTwitter = (req, res) => {
   const state = crypto.randomUUID();
@@ -74,7 +76,7 @@ import { generateCodeChallenge, generateCodeVerifier } from "../utils/twitterUti
     req.session.username = userRes.data.data.username;
 
     // Redirect to frontend
-    res.redirect("https://irys-yappers.netlify.app");
+    res.redirect(process.env.FRONT_END_URL);
   } catch (err) {
     console.error("Twitter Auth Error:", err.response?.data || err.message);
     res.status(500).send("Auth failed");

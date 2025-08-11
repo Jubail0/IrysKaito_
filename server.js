@@ -12,7 +12,7 @@ const app = express();
 const PORT = 5000;
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://irys-yappers.netlify.app",
   credentials: true
 }));
 

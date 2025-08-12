@@ -16,8 +16,14 @@ import { generateCodeChallenge, generateCodeVerifier } from "../utils/twitterUti
   const authUrl = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${twitterConfig.clientId}&redirect_uri=${encodeURIComponent(
     twitterConfig.callbackUrl
   )}&scope=tweet.read%20users.read%20offline.access&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256`;
-
-  res.redirect(authUrl);
+  
+req.session.save((err) => {
+  if (err) {
+    console.error("Session save error:", err);
+    return res.status(500).send("Internal Server Error");
+  }
+   res.redirect(authUrl);
+});
 };
 
  export const handleTwitterCallback = async (req, res) => {

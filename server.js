@@ -12,7 +12,7 @@ const app = express();
 const PORT = 5000;
 
 app.use(cors({
-  origin: "https://irys-yappers.netlify.app",
+  origin: "https://irys-amplifiers.netlify.app",
   credentials: true
 }));
 

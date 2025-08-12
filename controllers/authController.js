@@ -75,7 +75,7 @@ import { generateCodeChallenge, generateCodeVerifier } from "../utils/twitterUti
     req.session.username = userRes.data.data.username;
 
     // Redirect to frontend
-    res.redirect("https://irys-yappers.netlify.app/gallery");
+    res.redirect("https://irys-amplifiers.netlify.app/gallery");
   } catch (err) {
     console.error("Twitter Auth Error:", err.response?.data || err.message);
     res.status(500).send("Auth failed");

@@ -80,6 +80,11 @@ req.session.save((err) => {
 
     // Store username in session
     req.session.username = userRes.data.data.username;
+     req.session.save((err) => {
+  if (err) {
+    console.error("Session save error:", err);
+    return res.status(500).send("Internal Server Error");
+  }});
 
     // Redirect to frontend
     res.redirect(process.env.FRONT_END_URL);
@@ -90,24 +95,47 @@ req.session.save((err) => {
 };
 
 
-export const saveWalletAddress = async(req,res) => {
+export const saveWalletAddress = async (req, res) => {
   try {
-      const {walletAddress} = req.body;
-      if(!walletAddress) res.status(400).send({error:"No wallet address"})
-      // Save the wallet address on session
-      req.session.wallet = walletAddress;
-      res.status(200).send({message:"Wallet Connected"})
+    const { walletAddress } = req.body;
+    if (!walletAddress) return res.status(400).send({ error: "No wallet address" });
+
+    // Save wallet address to session
+    req.session.wallet = walletAddress;
+
+    // Save session before responding
+    req.session.save((err) => {
+      if (err) {
+        console.error("Session save error:", err);
+        return res.status(500).send({ error: "Failed to save session" });
+      }
+      res.status(200).send({ message: "Wallet Connected" });
+    });
 
   } catch (error) {
-    console.log(error)
-    res.status(500).send({error: "Internal Server Issue"})
+    console.error(error);
+    res.status(500).send({ error: "Internal Server Issue" });
   }
+};
 
-}
+export const disconnectWallet = (req, res) => {
+  // If you only want to remove wallet but keep user logged in:
+  delete req.session.wallet;
+
+
+  req.session.save(err => {
+    if (err) {
+      console.error("Session save error:", err);
+      return res.status(500).send("Failed to disconnect wallet");
+    }
+    res.status(200).send("Wallet disconnected");
+  });
+};
 
 export default {
   handleTwitterCallback,
   redirectToTwitter,
-  saveWalletAddress
+  saveWalletAddress,
+  disconnectWallet
   
 };

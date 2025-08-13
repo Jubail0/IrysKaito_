@@ -1,0 +1,16 @@
+[33m53a04c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: checkout: moving from 0a3cf0d447b10063a4d1b86d6388f63ffe96e911 to main
+[33m0a3cf0d[m HEAD@{1}: commit: Update project with latest local changes
+[33m7a28ead[m HEAD@{2}: commit: JWT
+[33m79a54a4[m HEAD@{3}: commit: Overwrite remote repo with fresh local code
+[33md46ce1a[m HEAD@{4}: pull origin main --rebase (pick): Add connect-mongo for MongoDB session store
+[33m9e20ea6[m HEAD@{5}: pull origin main --rebase (start): checkout 9e20ea6cb4cdd3dd053c67d99ce1807e63dc3da6
+[33m53a04c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{6}: commit: Save current changes before pull
+[33m76f1dca[m HEAD@{7}: commit: Remove node_modules from repo and add to .gitignore
+[33m1c4d25d[m HEAD@{8}: commit: Add connect-mongo package and update session config
+[33me1aab5a[m HEAD@{9}: commit: Add connect-mongo for MongoDB session store
+[33m8699a33[m HEAD@{10}: Branch: renamed refs/heads/main to refs/heads/main
+[33m8699a33[m HEAD@{12}: commit: Add new files and update existing ones
+[33mce57640[m HEAD@{13}: commit: Add new updates
+[33m73cfb36[m HEAD@{14}: Branch: renamed refs/heads/main to refs/heads/main
+[33m73cfb36[m HEAD@{16}: Branch: renamed refs/heads/master to refs/heads/main
+[33m73cfb36[m HEAD@{18}: commit (initial): Initial commit

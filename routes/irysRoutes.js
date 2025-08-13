@@ -1,6 +1,6 @@
 import express from "express";
 import { fetchCardsData, getMindshare, irysUpload } from "../controllers/irysController.js";
-import authMiddleware from "../Middlewares/authMiddleware";
+import authMiddleware from "../Middlewares/authMiddleware.js";
 import { checkUploadLimit } from "../Middlewares/uploadLimitMiddleware.js";
 const router = express.Router();
 

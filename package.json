@@ -25,6 +25,7 @@
     "ethers": "^6.15.0",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
     "passport": "^0.7.0",
     "passport-twitter-oauth2": "^2.1.1"
   },

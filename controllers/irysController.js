@@ -28,13 +28,11 @@ function verifySignature(address, signature, message, expectedUsername) {
  export const irysUpload = async (req, res) => {
   try {
   
+    const {walletAddress} = req.user;
+    const { jsonData } = req.body;
 
-    const { address, signature, message, jsonData } = req.body;
-    const isvalid = verifySignature(address, signature, message, jsonData.profile.username);
+    if(!walletAddress || walletAddress === null || !req.user.walletAddress) return res.status(401).json({error: "Please connect your wallet"})
 
-    if (!isvalid) {
-      return res.status(403).json({ error: "Signature invalid or username mismatch" });
-    }
 
       // First check user uploads limit is upto 5
     const upload_limit = 5;
@@ -42,11 +40,15 @@ function verifySignature(address, signature, message, expectedUsername) {
 
     if(userUploaded >= upload_limit) return res.status(403).json({error:"Maximum uploads reached" });
 
+    const timestamp = new Date().toISOString()
+    jsonData.profile.uploadedBy = walletAddress;
+    jsonData.profile.uploadedAt = timestamp;
+
     const receipt = await irys.upload(JSON.stringify(jsonData), {
       tags: [
         { name: "content-Type", value: "application/json" },
         { name: "application-id", value:"yappers"},
-        { name: "owner", value: address },
+        { name: "owner", value: walletAddress },
       ],
     });
 

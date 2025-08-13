@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/mindshare", getMindshare);
 router.post("/upload",[authMiddleware,checkUploadLimit],irysUpload);
-router.get("/getCards", authMiddleware, fetchCardsData);
+router.get("/getCards", fetchCardsData);
 
 export default router;

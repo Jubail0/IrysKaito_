@@ -1,5 +1,5 @@
 import express from "express";
-import { handleTwitterCallback, redirectToTwitter, saveWalletAddress } from "../controllers/authController.js";
+import { handleTwitterCallback, redirectToTwitter, saveWalletAddress, disconnectWallet } from "../controllers/authController.js";
 
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.get("/twitter/callback", handleTwitterCallback);
 
 // Connect wallet and save address on session
 router.post("/link-wallet", saveWalletAddress);
+router.post("/disconnect-wallet", disconnectWallet);
 
 
 export default router;

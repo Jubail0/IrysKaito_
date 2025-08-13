@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const checkUploadLimit = async(req,res,next) => {
-    const userAddress = req.body.address; 
+    const userAddress = req.user.walletAddress; 
     const query = `
       query {
         transactions(tags: [
